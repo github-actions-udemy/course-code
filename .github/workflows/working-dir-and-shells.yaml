@@ -1,6 +1,11 @@
 name: Workflow Dir & Shells
 on: [push]
 
+defaults:
+  run:
+    shell: bash  # uses bash as a default shell
+    # working-directory: /dsad/dsad -> working directories can be overridden too
+
 jobs:
   display-wd-info:
     runs-on: ubuntu-latest
@@ -12,13 +17,24 @@ jobs:
           echo $GITHUB_SHA 
           echo $GITHUB_REPOSITORY
           echo $GITHUB_WORKSPACE
+      - name: Changes Working Dir
+        working-directory: /home/runner
+        run: pwd
   display-wd-info-windows:
     runs-on: windows-latest
+    defaults:
+      run:
+        shell: pwsh # overrides the previously set default shell and uses powershell on windows
     steps:
       - name: Display Working Directory & Lists Files
         run: |
-          pwd
-          ls -a
-          echo $GITHUB_SHA 
-          echo $GITHUB_REPOSITORY
-          echo $GITHUB_WORKSPACE
+          Get-location
+          dir
+          echo $env:GITHUB_SHA 
+          echo $env:GITHUB_REPOSITORY
+          echo $env:GITHUB_WORKSPACE
+      - name: Python Shell
+        shell: python # overrides the other shells and uses python's 
+        run: |
+          import platform
+          print(platform.process())
