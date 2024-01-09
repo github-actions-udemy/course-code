@@ -3,11 +3,25 @@ on: [push]
 
 jobs:
     run-shell-commands:
-        runs-on: ubuntu-latest
-        steps: 
-            - name: echo a string
-              run: echo "Hello World"
-            - name: Multiline Command
-              run: 
-                node -v
-                npm -v
+      runs-on: ubuntu-latest
+      steps: 
+          - name: echo a string
+            run: echo "Hello World"
+          - name: Multiline Command
+            run: 
+              node -v
+              npm -v
+    parallel-job-macos:
+      runs-on: macos-latest
+      steps:
+        - name: View SW Version
+          run: sw_vers
+    dependant-job:
+      runs-on: windows-latest
+      needs: run-shell-commands # when a job needs another to run, executes that one and then proceeds
+      steps:
+        - name: echo a string
+          run: Write-Output "Windows String"
+        - name: Error Step
+          run: doesnotexist
+      
