@@ -37,4 +37,4 @@ jobs:
         shell: python # overrides the other shells and uses python's 
         run: |
           import platform
-          print(platform.process())
+          print(platform.processor())
