@@ -1,0 +1,15 @@
+name: Stale Issues & PR
+on:
+  schedule:
+    - cron: "* 14 * * *" # * means any value (crontab.guru) - in this case it run every minute from 14h00 to 14h59
+    - cron: "0/5 * * * *" # every 5 minutes
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v8
+        with:
+          stale-issue-message: "This is some message"
+          days-before-stale: 1
+          days-before-close: 5
+          
