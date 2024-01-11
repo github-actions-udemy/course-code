@@ -1,4 +1,4 @@
-name: Workflow Commnands
+name: Workflow Commands
 on: [push]
 
 jobs:
