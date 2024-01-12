@@ -31,7 +31,8 @@ jobs:
       - run: |
           echo '${{ steps.step-1.outputs.step-output }}'
           echo '${{ steps.step-2.outputs.step-output }}'
-  node-matrix: 
+  node-matrix:
+    needs: prepare-matrix 
     strategy:
       matrix:
         os: ${{ fromJson(needs.prepare-matrix.outputs.matrix-arrays).os }}
