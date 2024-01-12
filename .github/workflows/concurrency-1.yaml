@@ -7,7 +7,9 @@ on:
         type: environment
         required: true
 
-concurrency: concurrency-1 # concurrency group
+concurrency: 
+  group: concurrency-1 # concurrency group
+  cancel-in-progress: true # starts the latest run and cancels other jobs
 jobs:
   sleep:
     runs-on: ubuntu-latest
