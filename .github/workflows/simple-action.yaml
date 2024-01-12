@@ -5,10 +5,14 @@ jobs:
   simple-action:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: Simple JS Action
         id: greet # id with which we can reference in a step
-        uses: actions/hello-world-javascript-action@d484f796f8039011e15cdd2b4cc648da338e7649 # repository where the action lives (after the @ we can reference a branch, version or commit (the most reliable))
+        uses: ./.github/actions/hello
+        # uses: actions/hello-world-javascript-action@d484f796f8039011e15cdd2b4cc648da338e7649 # repository where the action lives (after the @ we can reference a branch, version or commit (the most reliable))
         with:
-          who-to-greet: Ali
+          who-to-greet: Pedro
       - name: Log Greeting Time
         run: echo "${{ steps.greet.outputs.time }}"
+      - name: Long ENV Var
+        run: echo $HELLO_TIME
