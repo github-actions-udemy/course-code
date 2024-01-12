@@ -12,7 +12,7 @@ jobs:
         uses: actions/cache@v3 # saves dependencies on cache to avoid install them in other runs
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }} # linux-npm-cache-7383493
+          key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }} # linux-npm-cache-73834923123
           restore-keys: |
             ${{ runner.os }}-npm-cache-
             ${{ runner.os }}-
