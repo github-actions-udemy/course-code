@@ -1,4 +1,5 @@
 name: Concurrency 2
+run-name: Concurrency 2 ${{ inputs.environment }}
 on:
   workflow_dispatch:
     inputs:
@@ -7,6 +8,9 @@ on:
         type: environment
         required: true
 
+concurrency: 
+  group: ${{ inputs.environment }} # concurrency group
+  cancel-in-progress: true # starts the latest run and cancels other runs
 jobs:
   sleep:
     runs-on: ubuntu-latest
