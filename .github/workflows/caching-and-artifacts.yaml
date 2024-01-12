@@ -30,7 +30,7 @@ jobs:
           path: coverage
           retention-days: 10 # github deletes artifacts after 10 days
       - name: Download Code Coverage
-        uses: actions/download-artifacts@v3
+        uses: actions/download-artifact@v3
         with:
           name: code-coverage
           path: code-coverage-report
