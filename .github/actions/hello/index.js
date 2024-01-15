@@ -6,7 +6,7 @@ try {
     warning('Warning Message');
     _error('Error Message');
 
-    const name = getInput('who-to-greet');
+    const name = getInput('who_to_greet');
 
     console.log(`Hello ${name}`);
 
