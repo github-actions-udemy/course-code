@@ -2,11 +2,12 @@ import { debug, warning, error as _error, getInput, setOutput, exportVariable, s
 import { context } from "@actions/github";
 
 try {
+    throw new Error("Some error message")
     debug('Debug Message');
     warning('Warning Message');
     _error('Error Message');
 
-    const name = getInput('who_to_greet');
+    const name = getInput("who_to_greet");
 
     console.log(`Hello ${name}`);
 
