@@ -1,26 +1,26 @@
-const core = require("@actions/core");
-const github = require("@actions/github");
+import { debug, warning, error as _error, getInput, setOutput, exportVariable, startGroup, endGroup, setFailed } from "@actions/core";
+import { context } from "@actions/github";
 
 try {
-    core.debug('Debug Message');
-    core.warning('Warning Message');
-    core.error('Error Message');
+    debug('Debug Message');
+    warning('Warning Message');
+    _error('Error Message');
 
-    const name = core.getInput('who_to_greet');
+    const name = getInput('who_to_greet');
 
     console.log(`Hello ${name}`);
 
     const time = new Date();
-    core.setOutput("time", time.toTimeString());
+    setOutput("time", time.toTimeString());
 
-    core.exportVariable("HELLO_TIME", time);
+    exportVariable("HELLO_TIME", time);
 
-    core.startGroup("Logging github context");
-    console.log(JSON.stringify(github.context, null, 2))
-    core.endGroup();
+    startGroup("Logging github context");
+    console.log(JSON.stringify(context, null, 2))
+    endGroup();
     
 } catch (error) {
-    core.setFailed(error.message)
+    setFailed(error.message)
 }
 
 
